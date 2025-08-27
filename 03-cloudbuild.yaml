@@ -1,0 +1,14 @@
+steps:
+    # Step 1: Build the Docker Image
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['build', '-t', 'us-central1-docker.pkg.dev/class65gcpv3/task2-repo/my-app:latest', ',']
+    # Step 2: Push the Docker Image
+    - name: 'gcr.io/cloud-builders/docker'
+      args: ['push', 'us-central1-docker.pkg.dev/class65gcpv3/task2-repo/my-app: latest']
+
+# This section tells Cloud Build to automatically push logs to Cloud Logging
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+images:
+  - 'us-central1-docker.pkg.dev/class65gcpv3/task2-repo/my-app: latest'
